@@ -28,6 +28,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./love-letter
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,7 +46,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './love-letter/dist'
+          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
